@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0f0f1a;
+        }
+
+        .card {
+            text-align: center;
+            padding: 3rem 5rem;
+            background: #1a1a2e;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        #count {
+            font-size: 6rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        #count.negative {
+            color: #ff6b6b;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.1s, opacity 0.2s;
+        }
+
+        button:hover {
+            opacity: 0.85;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        .btn-inc {
+            background: #4ecca3;
+            color: #0f0f1a;
+        }
+
+        .btn-dec {
+            background: #ff6b6b;
+            color: #ffffff;
+        }
+
+        .btn-reset {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>Counter</h1>
+        <h2 id="count">0</h2>
+        <div class="buttons">
+            <button class="btn-dec" id="decrease">− 1</button>
+            <button class="btn-reset" id="reset">Reset</button>
+            <button class="btn-inc" id="increase">+ 1</button>
+        </div>
+    </div>
+
+    <script>
+        let count = 0;
+        const countDisplay = document.getElementById('count');
+        const increaseBtn = document.getElementById('increase');
+        const decreaseBtn = document.getElementById('decrease');
+        const resetBtn = document.getElementById('reset');
+
+        function updateDisplay() {
+            countDisplay.textContent = count;
+            if (count < 0)
+                countDisplay.classList.add("negative");
+            else
+                countDisplay.classList.remove("negative");
+        }
+
+        increaseBtn.addEventListener('click', function () {
+            count++;
+            updateDisplay();
+        })
+        decreaseBtn.addEventListener('click', function () {
+            count--;
+            updateDisplay();
+        })
+        resetBtn.addEventListener('click', function () {
+            count = 0;
+            updateDisplay();
+        });
+
+    </script>
+
+</body>
+
+</html>
